@@ -1,8 +1,22 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "About Me";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1>@ViewData["Title"]</h1>
+
+<div class="text-left">
+    <p id="dateTime"></p>
+    <p>Hi, I'm James. </p>
+    <p>I'm 29-years-old (big 3-0 this July!), married (August 2019), and live in Connor near the town of Ballymena in Northern Ireland.</p>
+    <img src="~/lib/images/me_emma.jpg" height="400" width="500" />
 </div>
+
+<script> 
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = dd + '/' + mm + '/' + yyyy;
+    document.getElementById("dateTime").innerHTML = today;
+</script>
