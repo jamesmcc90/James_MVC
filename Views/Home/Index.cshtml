@@ -5,5 +5,20 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Welcome to my ASP.NET MVC site. This is simply to give me more experience of MVC.</a>.</p>
-   
+
+ 
+</div>
+<div>
+    <h3>
+        Today's Date (<a href="https://www.tutorialsteacher.com/mvc/razor-syntax" target="_blank">Tutorials Teacher</a>)
+    </h3>
+    @{
+        var date = DateTime.Now.ToLongDateString();
+
+        string message = "This was achieved using Razor";
+
+        <text>Today's date is </text> @date<br />
+        @message
+    }
+
 </div>

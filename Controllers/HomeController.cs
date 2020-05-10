@@ -2,38 +2,68 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using James_MVC.Models;
+using System.Collections.Generic;
 
 namespace James_MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //Email code courtesy of https://nickolasfisher.com/blog/How-To-Make-a-Basic-Working-Contact-Form-With-ASP-NET-Core-MVC-and-MailKit
 
-        public HomeController(ILogger<HomeController> logger)
+        private EmailAddress FromAndToEmailAddress;
+        private IEmailService EmailService;
+        public HomeController(EmailAddress _fromAddress, IEmailService _emailService)
         {
-            _logger = logger;
+            FromAndToEmailAddress = _fromAddress;
+            EmailService = _emailService;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public ViewResult Index()
         {
             return View();
         }
+
+
+        [HttpPost]
+        public IActionResult Index(ContactFormModel model) {
+            if (ModelState.IsValid)
+            {
+                EmailMessage msgToSend = new EmailMessage
+                {
+                    FromAddresses = new List<EmailAddress> { FromAndToEmailAddress },
+                    ToAddresses = new List<EmailAddress> { FromAndToEmailAddress },
+                    Content = $"Name: {model.Name} " + "<br/>" +              
+                              $"Email: {model.Email} " + "<br/>" +
+                              $"Message: {model.Message}",
+                              Subject = "Contact Form - MVC Site"
+                };
+
+                EmailService.Send(msgToSend);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return Index();
+            }
+
+        }
+  
 
         public IActionResult About()
         {
             return View();
         }
 
+        public IActionResult Contact()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
