@@ -5,23 +5,77 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model James_MVC.Models.ContactFormModel
 
-<h1>Contact</h1>
+<style>
+
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+
+    label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+    }
+
+    .col-100 {
+        width: 100%;
+    }
+
+    .col-45 {
+        width: 45%;
+    }
+
+    form .error {
+        color: #ff0000;
+    }
+</style>
+<h1>Contact</h1> <!-- Based off of: https://www.w3schools.com/css/tryit.asp?filename=trycss_form_responsive and https://www.c-sharpcorner.com/article/model-validation-using-data-annotations-in-asp-net-mvc/ -->
 <div>
     <p>Feel free to contact me using the form below.</p>
-    <form asp-action="Index" asp-controller="Home" method="post">
-        <div>
-            <label asp-for="Name">Please enter your name:</label>
-            <input type="text" asp-for="Name" />
-        </div>
-        <div>
-            <label asp-for="Email">Please enter your email:</label>
-            <input type="text" asp-for="Email" />
-        </div>
-        <div>
-            <label asp-for="Message">Please enter your message:</label>
-            <textarea asp-for="Message"></textarea>
-        </div>
-        <input type="submit" value="Send Message!" />
+ 
+        <form asp-action="Index" asp-controller="Home" method="post" id="contact_form" name="contact_form">
+            <div class="row">
+                <div class="col-100">
+                    <label asp-for="Name">Name:</label>
+                </div>
+                <div class="col-45">
+                    <input type="text" id="Name" asp-for="Name" />
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-    </form>
+            <div class="row">
+                <div class="col-100">
+                    <label asp-for="Email">Email:</label>
+                </div>
+                <div class="col-45">
+                    <input type="text" id="Email" asp-for="Email" />
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-100">
+                    <label asp-for="Message">Message:</label>
+                </div>
+                <div class="col-45">
+                    <textarea asp-for="Message" id="Message"></textarea>
+                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-35">
+                    <input type="submit" value="Send Message"/>
+                </div>
+            </div>
+        </form>
+    
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

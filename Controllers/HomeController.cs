@@ -26,21 +26,22 @@ namespace James_MVC.Controllers
 
 
         [HttpPost]
-        public IActionResult Index(ContactFormModel model) {
+        public IActionResult Index(ContactFormModel model)
+        {
             if (ModelState.IsValid)
             {
                 EmailMessage msgToSend = new EmailMessage
                 {
                     FromAddresses = new List<EmailAddress> { FromAndToEmailAddress },
                     ToAddresses = new List<EmailAddress> { FromAndToEmailAddress },
-                    Content = $"Name: {model.Name} " + "<br/>" +              
+                    Content = $"Name: {model.Name} " + "<br/>" +
                               $"Email: {model.Email} " + "<br/>" +
                               $"Message: {model.Message}",
-                              Subject = "Contact Form - MVC Site"
+                    Subject = "Contact Form - MVC Site"
                 };
 
                 EmailService.Send(msgToSend);
-                return RedirectToAction("Index");
+                return RedirectToAction("ContactThanks");
             }
             else
             {
@@ -48,7 +49,7 @@ namespace James_MVC.Controllers
             }
 
         }
-  
+
 
         public IActionResult About()
         {
@@ -56,6 +57,11 @@ namespace James_MVC.Controllers
         }
 
         public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult ContactThanks()
         {
             return View();
         }
