@@ -2,26 +2,33 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Welcome to my ASP.NET MVC site. This is simply to give me more experience of MVC/C#/various other technologies.</p>
 
- 
-</div>
-<div>
-    <h3>
-        Today's Date (<a href="https://www.tutorialsteacher.com/mvc/razor-syntax" target="_blank">Tutorials Teacher</a>)
-    </h3>
-    @{
-        var date = DateTime.Now.ToLongDateString();
+<body>
+    <main role="main">
+        <!--https://mdbootstrap.com/docs/jquery/components/jumbotron/-->
+        <div class="jumbotron" style="background-image:url(https://i.pinimg.com/originals/70/ec/66/70ec669d12186634fe0177dcdfce64ce.jpg);">
+            <div class="container">
+                <h1 class="display-3">Welcome</h1>
+                <p>Welcome to my ASP.NET MVC site. This is simply to give me more experience of MVC/C#/various other technologies.</p>
 
-        string message = "This was achieved using Razor";
+            </div>
+        </div>
 
-        <text>Today's date is </text> @date<br />
-        @message
-    }
+        <div>
+            <h3>
+                Today's Date (<a href="https://www.tutorialsteacher.com/mvc/razor-syntax" target="_blank">Tutorials Teacher</a>)
+            </h3>
+            @{
+                var date = DateTime.Now.ToLongDateString();
 
-</div>
+                string message = "This was achieved using Razor";
+
+                <text>Today's date is </text> @date<br />
+                @message
+            }
+
+        </div>
+    </main>
 <!-- Based off of https://getbootstrap.com/docs/4.0/examples/carousel/ -->
 <div>
 <h3>Simple Bootstrap carousel</h3>
@@ -73,4 +80,6 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+    
 </div>
+</body>
