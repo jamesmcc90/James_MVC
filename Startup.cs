@@ -45,7 +45,7 @@ namespace James_MVC
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
 
-
+            //services.AddDbContext<JamesMVC>(options => options.UseSqlServer(Configuration.GetConnectionString("JamesMVC")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

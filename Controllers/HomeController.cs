@@ -3,11 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using James_MVC.Models;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace James_MVC.Controllers
 {
     public class HomeController : Controller
     {
+
+
         //Email code courtesy of https://nickolasfisher.com/blog/How-To-Make-a-Basic-Working-Contact-Form-With-ASP-NET-Core-MVC-and-MailKit
 
         private EmailAddress FromAndToEmailAddress;
@@ -62,6 +66,11 @@ namespace James_MVC.Controllers
         }
 
         public IActionResult ContactThanks()
+        {
+            return View();
+        }
+
+        public IActionResult TestArena()
         {
             return View();
         }
