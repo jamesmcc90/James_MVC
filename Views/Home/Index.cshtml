@@ -3,7 +3,18 @@
     Layout = "~/Views/Home/_IndexLayout.cshtml";
 }
 
+<style>
+    #image1{
+        opacity:0.6;
+    }
+    #image2 {
+        opacity: 0.6;
+    }
 
+    #image3 {
+        opacity: 0.6;
+    }
+</style>
 <body>
 
 
@@ -36,31 +47,31 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100 h-30" src="~/lib/images/newyork1.jpg" alt="First slide">
+                    <img class="d-block w-100 h-30" id="image1" src="~/lib/images/newyork1.jpg" alt="First slide">
                     <div class="container">
-                        <div class="carousel-caption text-left">
-                            <h1>GitHub</h1>
-                            <p>Have a look at my GitHub repositories.</p>
+                        <div class="carousel-caption text-left">                  
+                            <h1 style="background-color:black; opacity:0.5;">GitHub</h1>
+                            <p style="background-color:black; opacity:0.5;">Have a look at my GitHub repositories.</p>
                             <p><a class="btn btn-lg btn-primary" href="https://github.com/jamesmcc90/" target="_blank" role="button">Click here</a></p>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100 h-75" src="~/lib/images/newyork2.jpg" alt="Second slide">
+                    <img class="d-block w-100 h-75" id="image2" src="~/lib/images/newyork2.jpg" alt="Second slide">
                     <div class="container">
                         <div class="carousel-caption">
-                            <h1>Another example headline.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <h1 style="background-color:black; opacity:0.5;">Another example headline.</h1>
+                            <p style="background-color:black; opacity:0.5;">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                             <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100 h-75" src="~/lib/images/newyork3.jpg" alt="Third slide">
+                    <img class="d-block w-100 h-75" id="image3" src="~/lib/images/newyork3.jpg" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption text-right">
-                            <h1>One more for good measure.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <h1 style="background-color:black; opacity:0.5;">One more for good measure.</h1>
+                            <p style="background-color:black; opacity:0.5;">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                             <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
                         </div>
                     </div>
