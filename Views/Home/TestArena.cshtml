@@ -2,25 +2,87 @@
 @{
     ViewData["Title"] = "Test Arena";
 
-    //var db = Database.Open("JamesMVC");
-    var query = "SELECT * FROM Film";
 }
 
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model James_MVC.Models.ContactFormModel
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-<style>
-</style>
 <h1>Test Arena</h1>
-<div>
-    <p>Some stuff to play around with...</p>
+    <div>
+        <h2>Some stuff to play around with...</h2>
     <p>
-        Click <a href="http://127.0.0.1:8080/">here</a> for some Node.js (currently playing around with on localhost).</p>
+        Click <a href="http://127.0.0.1:8080/">here</a> for some Node.js (currently playing around with on localhost).
+    </p>
 
     <p>Based off <a href="https://nodejs.org/en/docs/guides/getting-started-guide/" target="_blank">Node.js.</a></p>
 
     <img src="~/lib/images/node_testing.jpg" width="600" height="400" />
-    <img src="~/lib/images/node pic.jpg" width="600" height="400" style="float:left;"/>
-</div>
+    <img src="~/lib/images/node pic.jpg" width="600" height="400" />
+    <img src="~/lib/images/output_node.jpg" width="600" height="400" />
 
+    <h2><a href="~/js/App.js">Some React stuff</a></h2>
+    </div>
+
+    <div>
+        <h2>AngularJS Form Validation Test</h2> (based on W3Schools https://www.w3schools.com/angular/tryit.asp?filename=try_ng_validate and https://www.w3schools.com/angular/angular_validation.asp )<br />
+
+        <p>AngularJS starts automatically when the web page has loaded.  </p>
+
+        <h2>Form State and Input State</h2>
+        <p>AngularJS is constantly updating the state of both the form and the input fields.</p>
+
+        <p>Input fields have the following states:</p>
+
+        <ul>
+            <li>$untouched - The field has not been touched yet</li>
+            <li>$touched - The field has been touched</li>
+            <li>$pristine - The field has not been modified yet</li>
+            <li>$dirty - The field has been modified</li>
+            <li>$invalid - The field content is not valid</li>
+            <li>$valid - The field content is valid</li>
+        </ul>
+        <p>They are all properties of the input field, and are either true or false.</p>
+
+        <p>Forms have the following states:</p>
+
+        <ul>
+            <li>$pristine - No fields have been modified yet</li>
+            <li>$dirty - One or more have been modified</li>
+            <li>$invalid - The form content is not valid</li>
+            <li>$valid - The form content is valid</li>
+            <li>$submitted - The form is submitted</li>
+        </ul>
+    </div>
+
+    <div>
+        <form ng-app="myFormApp" ng-controller="validateControls" name="myForm" novalidate action="mailto:james.mcc90@gmail.com" method="get">
+            <p>Username:</p>
+            <input type="text" name="user" id="name" ng-model="user" required>
+            <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+                <span ng-show="myForm.user.$error.required">Username is required</span>
+            </span>
+
+            <p>Email:</p>
+            <input type="email" name="email" id="email" ng-model="email" required>
+            <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                <span ng-show="myForm.email.$error.required">Email is required.</span>
+                <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+            </span>
+
+            <p>
+                <input type="submit" ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.email.$dirty && myForm.email.$invalid" />
+            </p>
+        </form>
+    </div>
+
+        <script>
+
+            var app = angular.module('myFormApp', []);
+            app.controller('validateControls', function ($scope) {
+                $scope.user = 'James McConnell';
+                $scope.email = 'james.mcc90@gmail.com';
+            });
+
+        </script>
